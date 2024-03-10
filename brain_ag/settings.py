@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
+
+Token Admin    : 2c9483fc3841a31a2ad341d25bd7609ba29e8190
+Token Franciele: 43d1e0ce649f3d50cfc2905e77a22d1467160cf2
 """
 
 from pathlib import Path
@@ -32,16 +35,23 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+
     # 3rd apps
     'django_extensions' ,
+    'validate_docbr',
     # my apps
     'brain_ag.produtor',
+    'brain_ag.fazenda',
+    'brain_ag.cultura',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +138,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+
+#DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES' :[
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE':2,
+    # 'DEFAULT_THROTLE_CLASSES':[
+    #     ''
+    # ]
+
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
