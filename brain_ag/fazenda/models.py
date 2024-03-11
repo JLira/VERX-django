@@ -2,6 +2,8 @@ from uuid import uuid4
 from django.db import models
 from django.utils import timezone
 
+from brain_ag.cultura.models import Cultura
+
 from ..produtor.models import Produtor
 
 class Fazenda(models.Model):
@@ -17,6 +19,7 @@ class Fazenda(models.Model):
     dt_alteracao = models.DateTimeField(auto_now=True)
 
     produtor = models.ManyToManyField(Produtor)
+    cultura = models.ManyToManyField(Cultura)
 
     class Meta:
         db_table = 'brain_ag_fazenda'

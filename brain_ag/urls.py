@@ -18,6 +18,7 @@ from django.urls import path, include
 
 from brain_ag.produtor.urls import router
 from brain_ag.fazenda.urls import fazenda_router
+from brain_ag.cultura.urls import cultura_router
 
 urlpatterns = [
     path('api/v1/', include('brain_ag.produtor.urls')),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/',include('rest_framework.urls')),
     #Fazenda
-    path('api/v2/', include(fazenda_router.urls))
+    path('api/v2/', include(fazenda_router.urls)),
+    #Cultura
+    path('api/v2/', include(cultura_router.urls)),
 ]

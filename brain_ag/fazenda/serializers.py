@@ -11,6 +11,7 @@ class FazendaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fazenda
         fields = (
+            'id',
             'cnpj',
             'nome',
             'cidade',
@@ -20,7 +21,8 @@ class FazendaSerializer(serializers.ModelSerializer):
             'area_vegetacao',
             'dt_cadastro',
             'dt_alteracao',
-            'produtor'
+            'produtor',
+            'cultura'
         )
 
     def validate_cnpj(self, valor):
@@ -75,14 +77,3 @@ class FazendaSerializer(serializers.ModelSerializer):
 
         return data
 
-
-    # def validate_area_total(self, data):
-    #    area_total_hectares = data
-    #    area_agricultavel_hectares = data['area_agricultavel']
-    #    area_vegetacao_hectares = data['area_vegetacao']
-
-    #    if area_agricultavel_hectares + area_vegetacao_hectares > area_total_hectares:
-    #       raise ValidationError(
-    #           'A soma da área agricultável e da vegetação não pode ser maior que a área total da fazenda.'
-    #       )
-    #    return data
