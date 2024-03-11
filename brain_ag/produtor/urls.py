@@ -8,6 +8,6 @@ router = SimpleRouter()
 router.register('produtores', ProdutorViewSet)
 
 urlpatterns = [
-    path('produtores/', ProdutoresAPIView.as_view(), name='produtores'),
-    path('produtores/<uuid:pk>/', ProdutorAPIView.as_view(), name='produtor')
+    # path('produtores/', ProdutoresAPIView.as_view(), name='produtores'),
+    # path('produtores/<uuid:pk>/', ProdutorAPIView.as_view(), name='produtor')
 ]

@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from brain_ag.produtor.urls import router
+from brain_ag.fazenda.urls import fazenda_router
 
 urlpatterns = [
     path('api/v1/', include('brain_ag.produtor.urls')),
     path('api/v2/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('auth/',include('rest_framework.urls')),
+    #Fazenda
+    path('api/v2/', include(fazenda_router.urls))
 ]
