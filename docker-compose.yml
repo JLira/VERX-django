@@ -12,7 +12,7 @@ services:
       - LC_ALL=C.UTF-8
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=db 
+      - POSTGRES_DB=db
     ports:
       - 5433:5432
     networks:
@@ -27,7 +27,7 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - 5050:80
     networks:
@@ -36,6 +36,6 @@ services:
 volumes:
   pgdata:
   pgadmin:
-  
+
 networks:
   postgres:

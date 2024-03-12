@@ -29,8 +29,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', 'testserver', default=[], cast=Csv())
-ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost'] 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
+# ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost'] 
 
 
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'django_seed',
 
     # 3rd apps
     'django_extensions',
