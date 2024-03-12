@@ -1,15 +1,20 @@
 from uuid import uuid4
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 from brain_ag.cultura.models import Cultura
 
 from ..produtor.models import Produtor
 
+def validate_nome_nao_vazio(value):
+    if not value:
+        raise ValidationError('Este campo não pode ficar em branco.')
+
 class Fazenda(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     cnpj = models.CharField(max_length=14)
-    nome = models.CharField(max_length=255)
+    nome = models.CharField(max_length=100, validators=[validate_nome_nao_vazio])
     cidade = models.CharField(max_length=255)
     estado = models.CharField(max_length=2)
     area_total = models.DecimalField(max_digits=10, decimal_places=2)

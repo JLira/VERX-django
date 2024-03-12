@@ -29,7 +29,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', 'testserver', default=[], cast=Csv())
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost'] 
+
 
 
 # Application definition
@@ -46,7 +48,7 @@ INSTALLED_APPS = [
     'django_filters',
 
     # 3rd apps
-    'django_extensions' ,
+    'django_extensions',
     'validate_docbr',
     # my apps
     'brain_ag.produtor',
@@ -91,10 +93,10 @@ WSGI_APPLICATION = 'brain_ag.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':config('POSTGRES_DB','db'),
-        'USER':config('POSTGRES_USER','postgres'),
-        'PASSWORD':config('POSTGRES_PASSWORD','postgres'),
-        'HOST':config('DB_HOST','127.0.0.1'),
+        'NAME': config('POSTGRES_DB', 'db'),
+        'USER': config('POSTGRES_USER', 'postgres'),
+        'PASSWORD': config('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': config('DB_HOST', '127.0.0.1'),
         'PORT': '5433',
     }
 }
@@ -128,7 +130,7 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
 USE_TZ = True
 
@@ -139,18 +141,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
-#DRF
+# DRF
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':[
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
-    'DEFAULT_PERMISSION_CLASSES' :[
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE':10,
-    'DEFAULT_THROTTLE_CLASSES':[
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 10,
+    'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle',
     ],
