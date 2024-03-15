@@ -4,8 +4,7 @@ from django.core.exceptions import ValidationError
 
 from validate_docbr import CPF
 
-from .models import Produtor
-
+from brain_ag.fazenda.models import Produtor
 
 class ProdutorSerializer(serializers.ModelSerializer):
     class Meta:

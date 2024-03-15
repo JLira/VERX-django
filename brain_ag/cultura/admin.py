@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Cultura
+from brain_ag.cultura.models import Cultura
 
 
 @admin.register(Cultura)

@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 from brain_ag.cultura.models import Cultura
 
-from ..produtor.models import Produtor
+from brain_ag.produtor.models import Produtor
 
 def validate_nome_nao_vazio(value):
     if not value:
@@ -34,3 +34,30 @@ class Fazenda(models.Model):
         
     def __str__(self):
         return self.nome
+
+
+def criar_dados_mockados_fazenda():
+    # Verifica se a tabela Fazenda está vazia
+    if not Fazenda.objects.exists():
+        # Cria um produtor mock
+        produtor = Produtor.objects.create(cpf="12345678901", nome="João da Silva")
+        
+        # Cria algumas culturas mock
+        cultura_milho = Cultura.objects.create(nome="Milho", ciclo_vida=90, epoca_plantio="Primavera", irrigacao_necessaria=True)
+        cultura_trigo = Cultura.objects.create(nome="Trigo", ciclo_vida=120, epoca_plantio="Outono", irrigacao_necessaria=False)
+        
+        # Cria a fazenda e associa o produtor e as culturas
+        fazenda = Fazenda.objects.create(
+            cnpj="01234567890123",
+            nome="Fazenda Bela Vista",
+            cidade="São Paulo",
+            estado="SP",
+            area_total=1000,
+            area_agricultavel=800,
+            area_vegetacao=200
+        )
+        fazenda.produtor.add(produtor)
+        fazenda.cultura.add(cultura_milho, cultura_trigo)
+
+# Chamando a função para criar os dados mockados
+criar_dados_mockados_fazenda()    

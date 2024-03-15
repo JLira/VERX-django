@@ -21,3 +21,4 @@ tomli==2.0.1
 typing_extensions==4.10.0
 urllib3==2.2.1
 validate-docbr==1.10.0
+drf-yasg==1.21.7

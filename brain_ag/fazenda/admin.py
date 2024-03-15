@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Fazenda
-from ..produtor.models import Produtor
+from brain_ag.fazenda.models import Fazenda
+from brain_ag.produtor.models import Produtor
 
 
 @admin.register(Fazenda)

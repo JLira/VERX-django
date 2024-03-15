@@ -21,3 +21,14 @@ class Cultura(models.Model):
      
     def __str__(self):
         return self.nome
+    
+def criar_dados_mockados():
+    if not Cultura.objects.exists():
+        Cultura.objects.create(nome="Milho", ciclo_vida=90, epoca_plantio="Primavera", irrigacao_necessaria=True)
+        Cultura.objects.create(nome="Trigo", ciclo_vida=120, epoca_plantio="Outono", irrigacao_necessaria=False)
+        Cultura.objects.create(nome="Arroz", ciclo_vida=150, epoca_plantio="Verão", irrigacao_necessaria=True)
+        Cultura.objects.create(nome="Feijão", ciclo_vida=80, epoca_plantio="Inverno", irrigacao_necessaria=False)
+        Cultura.objects.create(nome="Soja", ciclo_vida=100, epoca_plantio="Primavera", irrigacao_necessaria=True)
+
+# Chamando a função para criar os dados mockados
+criar_dados_mockados()    

@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 from validate_docbr import CNPJ
 
-from .models import Fazenda
+from brain_ag.fazenda.models import Fazenda
 
 
 class FazendaSerializer(serializers.ModelSerializer):

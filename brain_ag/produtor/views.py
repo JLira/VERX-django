@@ -3,11 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from rest_framework import generics
-from .models import Produtor
-from .serializers import ProdutorSerializer
+
+from brain_ag.produtor.models import Produtor
+from brain_ag.produtor.serializers import ProdutorSerializer
+
 from rest_framework import viewsets
 from rest_framework import permissions
-from .permissions import EhSuperUser
+from brain_ag.produtor.permissions import EhSuperUser
 
 
 """

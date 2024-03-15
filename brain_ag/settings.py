@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 
-Token Admin    : 2c9483fc3841a31a2ad341d25bd7609ba29e8190
+Token Admin    : f39a71c47b60a008e947ee3de9e7e939ba81433e
 Token Franciele: 43d1e0ce649f3d50cfc2905e77a22d1467160cf2
 """
 
@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'django_filters',
-    'django_seed',
 
     # 3rd apps
     'django_extensions',
@@ -162,6 +162,17 @@ REST_FRAMEWORK = {
         'user': '10/minute'
     }
 
+}
+
+# SWAGGER SETTINGS
+SWAGGER_SETTINGS = {
+  'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
 }
 
 # Default primary key field type

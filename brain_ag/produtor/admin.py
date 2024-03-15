@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Produtor
+from brain_ag.produtor.models import Produtor
 
 @admin.register(Produtor)
 class ProdutorAdmin(admin.ModelAdmin):
