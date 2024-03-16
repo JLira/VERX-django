@@ -30,9 +30,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
-# ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost'] 
-
-
 
 # Application definition
 
@@ -174,6 +171,7 @@ SWAGGER_SETTINGS = {
       }
    }
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

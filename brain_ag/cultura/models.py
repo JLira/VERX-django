@@ -1,13 +1,15 @@
 from uuid import uuid4
 from django.db import models
 from django.forms import ValidationError
+
+# from brain_ag.fazenda.models import Fazenda
 class Cultura(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome = models.CharField(max_length=255)
     ciclo_vida = models.IntegerField(help_text='Dias para completar o ciclo de vida da cultura.', default=0, null=False)
     epoca_plantio = models.CharField(max_length=255, blank=True, null=True, help_text='Época ideal para o plantio da cultura.')
     irrigacao_necessaria = models.BooleanField(default=False)
-
+    # fazendas = models.ManyToManyField(Fazenda, related_name='culturas')
 
     class Meta:
         db_table = 'brain_ag_cultura' 

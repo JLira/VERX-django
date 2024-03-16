@@ -19,8 +19,6 @@ class FazendaSerializer(serializers.ModelSerializer):
             'area_total',
             'area_agricultavel',
             'area_vegetacao',
-            'dt_cadastro',
-            'dt_alteracao',
             'produtor',
             'cultura'
         )
@@ -55,7 +53,8 @@ class FazendaSerializer(serializers.ModelSerializer):
         try:
             area_total = Decimal(area_total)
         except:
-            raise ValidationError({'area_total': 'Valor inválido. Utilize apenas números.'})
+            raise ValidationError(
+                {'area_total': 'Valor inválido. Utilize apenas números.'})
 
         if area_total < 0:
             raise ValidationError({'area_total': 'O valor deve ser positivo.'})
@@ -67,13 +66,15 @@ class FazendaSerializer(serializers.ModelSerializer):
         area_vegetacao = data.get('area_vegetacao')
 
         if area_agricultavel and not isinstance(area_agricultavel, Decimal):
-            raise ValidationError({'area_agricultavel': 'Valor inválido. Utilize apenas números.'})
+            raise ValidationError(
+                {'area_agricultavel': 'Valor inválido. Utilize apenas números.'})
 
         if area_vegetacao and not isinstance(area_vegetacao, Decimal):
-            raise ValidationError({'area_vegetacao': 'Valor inválido. Utilize apenas números.'})
+            raise ValidationError(
+                {'area_vegetacao': 'Valor inválido. Utilize apenas números.'})
 
         if area_agricultavel and area_vegetacao and area_agricultavel + area_vegetacao > data['area_total']:
-            raise ValidationError({'area_total': 'A soma das áreas agricultável e de vegetação não pode ser maior que a área total.'})
+            raise ValidationError(
+                {'area_total': 'A soma das áreas agricultável e de vegetação não pode ser maior que a área total.'})
 
         return data
-
